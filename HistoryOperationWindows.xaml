@@ -1,0 +1,28 @@
+﻿<Window x:Class="BankSystemWpfControlLibrary.HistoryOperationWindows"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankSystemWpfControlLibrary"
+        mc:Ignorable="d"
+        Title="HistoryOperationWindows" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="ListBoxDataHistory"
+                     SelectionMode="Single"
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+                
+                <DataTemplate>
+                    <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="5,5,5,5" Text="{Binding AccountTransactionInfo}"/>
+                            <Border Padding="5,5,5,5" Background="Azure" BorderBrush="Black" BorderThickness="1">
+                                <TextBlock Margin="5,5,5,5" Text="{Binding IsCompleted}"/>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+</Window>
