@@ -38,6 +38,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -52,8 +54,17 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankAccountsList.xaml.cs">
+      <DependentUpon>BankAccountsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankClientList.xaml.cs">
+      <DependentUpon>BankClientList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HistoryOperationWindows.xaml.cs">
       <DependentUpon>HistoryOperationWindows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuOfAccountOperations.xaml.cs">
+      <DependentUpon>MenuOfAccountOperations.xaml</DependentUpon>
     </Compile>
     <Compile Include="SelectionWindows\BankAccountSelectionWindow.xaml.cs">
       <DependentUpon>BankAccountSelectionWindow.xaml</DependentUpon>
@@ -65,9 +76,21 @@
       <DependentUpon>TransactionDisplayWindows.xaml</DependentUpon>
     </Compile>
     <None Include="app.config" />
+    <Page Include="BankAccountsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankClientList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HistoryOperationWindows.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MenuOfAccountOperations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SelectionWindows\EmployeeSelectionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

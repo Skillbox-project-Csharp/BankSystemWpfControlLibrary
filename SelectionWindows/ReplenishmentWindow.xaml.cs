@@ -18,7 +18,7 @@ namespace BankSystemWpfControlLibrary.SelectionWindows
     /// <summary>
     /// Логика взаимодействия для ReplenishmentAccount.xaml
     /// </summary>
-    public partial class ReplenishmentAccount : Window
+    public partial class ReplenishmentWindow : Window
     {
         private double _amount = 0;
         public double AmountAddMoney
@@ -30,7 +30,7 @@ namespace BankSystemWpfControlLibrary.SelectionWindows
             private set { _amount = value; }
         }
 
-        public ReplenishmentAccount(string labelText)
+        public ReplenishmentWindow(string labelText)
         {
             InitializeComponent();
             AmountAddMoney = 0;
