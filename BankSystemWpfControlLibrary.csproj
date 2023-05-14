@@ -69,6 +69,9 @@
     <Compile Include="SelectionWindows\BankAccountSelectionWindow.xaml.cs">
       <DependentUpon>BankAccountSelectionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SelectionWindows\RecipientSelectionWindow.xaml.cs">
+      <DependentUpon>RecipientSelectionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectionWindows\ReplenishmentWindow.xaml.cs">
       <DependentUpon>ReplenishmentWindow.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
     <Page Include="SelectionWindows\BankAccountSelectionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SelectionWindows\RecipientSelectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SelectionWindows\ReplenishmentWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

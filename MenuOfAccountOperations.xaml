@@ -29,6 +29,20 @@
                 Margin="5,5,5,5" 
                 VerticalAlignment="Top"
                 Click="ButtonReplenishmentAccount_Click"/>
+            <Button 
+                x:Name="ButtonTransfer"
+                Content="Перевод"
+                HorizontalAlignment="Left"
+                Margin="5,5,5,5" 
+                VerticalAlignment="Top"
+                Click="ButtonTransfer_Click"/>
+            <Button 
+                x:Name="ButtonTransferCov"
+                Content="Перевод ковариантный"
+                HorizontalAlignment="Left"
+                Margin="5,5,5,5" 
+                VerticalAlignment="Top"
+                Click="ButtonTransferCov_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

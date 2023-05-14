@@ -5,6 +5,7 @@ using BankSystemLibrary.BankWorkers;
 using BankSystemWpfControlLibrary.SelectionWindows;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,7 @@ namespace BankSystemWpfControlLibrary
         public Worker Employee { get; set; }
         public Client SelectedClient { get; set; }
         public BankAccount SelectedBankAccount { get; set; }
+        public ObservableCollection<Client> Clients { get; set; }
         public MenuOfAccountOperations()
         {
             InitializeComponent();
@@ -82,6 +84,68 @@ namespace BankSystemWpfControlLibrary
                             SelectedBankAccount.TypeAccount,
                             replenishmentWindow.AmountAddMoney
                             );
+                    }
+                    catch (AccessRightsException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void ButtonTransfer_Click(object sender, RoutedEventArgs e)
+        {
+            RecipientSelectionWindow recipientSelectionWindow = new RecipientSelectionWindow(SelectedClient, Clients);
+
+            if (recipientSelectionWindow.ShowDialog() == true)
+            {
+                Client recipient = recipientSelectionWindow.SelectedRecipient;
+                BankAccount recipientBankAccount = recipientSelectionWindow.SelectedAccountRecipient;
+                ReplenishmentWindow openAccountWindow = new ReplenishmentWindow("Перевод на сумму");
+
+                if (openAccountWindow.ShowDialog() == true)
+                {
+                    double money = openAccountWindow.AmountAddMoney;
+                    try
+                    {
+                        Employee.MoneyTransfer
+                            (
+                            SelectedClient,
+                            SelectedBankAccount,
+                            recipient,
+                            recipientBankAccount,
+                            money);
+                    }
+                    catch (AccessRightsException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void ButtonTransferCov_Click(object sender, RoutedEventArgs e)
+        {
+            RecipientSelectionWindow recipientSelectionWindow = new RecipientSelectionWindow(SelectedClient, Clients);
+
+            if (recipientSelectionWindow.ShowDialog() == true)
+            {
+                Client recipient = recipientSelectionWindow.SelectedRecipient;
+                BankAccount recipientBankAccount = recipientSelectionWindow.SelectedAccountRecipient;
+                ReplenishmentWindow openAccountWindow = new ReplenishmentWindow("Перевод на сумму");
+
+                if (openAccountWindow.ShowDialog() == true)
+                {
+                    double money = openAccountWindow.AmountAddMoney;
+                    try
+                    {
+                        Employee.MoneyTransferCov
+                            (
+                            SelectedClient,
+                            SelectedBankAccount,
+                            recipient,
+                            recipientBankAccount,
+                            money);
                     }
                     catch (AccessRightsException ex)
                     {

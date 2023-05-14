@@ -1,0 +1,28 @@
+﻿<Window x:Class="BankSystemWpfControlLibrary.SelectionWindows.RecipientSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankSystemWpfControlLibrary.SelectionWindows" xmlns:banksystemwpfcontrollibrary="clr-namespace:BankSystemWpfControlLibrary"
+        mc:Ignorable="d"
+        Title="RecipientSelectionWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <banksystemwpfcontrollibrary:BankClientList x:Name="bankClientList"/>
+                <banksystemwpfcontrollibrary:BankAccountsList x:Name="bankAccountsList"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button 
+                    Margin="5,5,5,5" 
+                    IsDefault="True"
+                    Click="Accept_Click"
+                    Content="ОК"/>
+                <Button 
+                    Margin="5,5,5,5" 
+                    IsCancel="True"
+                    Content="Отмена"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
