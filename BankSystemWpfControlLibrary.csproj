@@ -63,6 +63,7 @@
     <Compile Include="CustomerAccountManagementMenu.xaml.cs">
       <DependentUpon>CustomerAccountManagementMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExtensionMethods\FastTextDisplay.cs" />
     <Compile Include="HistoryOperationWindows.xaml.cs">
       <DependentUpon>HistoryOperationWindows.xaml</DependentUpon>
     </Compile>

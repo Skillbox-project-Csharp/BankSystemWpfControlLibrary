@@ -2,6 +2,7 @@
 using BankSystemLibrary.BankSystem.BankAccounts;
 using BankSystemLibrary.BankSystem.BankWorkers;
 using BankSystemLibrary.BankWorkers;
+using BankSystemWpfControlLibrary.ExtensionMethods;
 using BankSystemWpfControlLibrary.SelectionWindows;
 using System;
 using System.Collections.Generic;
@@ -89,7 +90,7 @@ namespace BankSystemWpfControlLibrary
                     }
                     catch (AccessRightsException ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        ex.Message.ShowMessage();
                     }
                 }
             }
@@ -122,7 +123,7 @@ namespace BankSystemWpfControlLibrary
                         }
                         catch (AccessRightsException ex)
                         {
-                            MessageBox.Show(ex.Message);
+                            ex.Message.ShowMessage();
                         }
                     }
                 }
