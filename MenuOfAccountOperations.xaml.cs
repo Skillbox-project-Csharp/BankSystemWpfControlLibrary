@@ -43,6 +43,8 @@ namespace BankSystemWpfControlLibrary
         }
         public void BankAccountSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(e.AddedItems.Count == 0)
+                SelectedBankAccount = null;
             foreach (var bankAccount in e.AddedItems)
                 if (bankAccount is BankAccount selectedBankAccount)
                     SelectedBankAccount = selectedBankAccount;
@@ -71,7 +73,7 @@ namespace BankSystemWpfControlLibrary
 
         private void ButtonReplenishmentAccount_Click(object sender, RoutedEventArgs e)
         {
-            if (Employee != null && SelectedClient!= null && SelectedBankAccount != null)
+            if (Employee != null && SelectedClient != null && SelectedBankAccount != null)
             {
                 ReplenishmentWindow replenishmentWindow = new ReplenishmentWindow("Пополнить счет на");
                 if (replenishmentWindow.ShowDialog() == true)
@@ -95,30 +97,33 @@ namespace BankSystemWpfControlLibrary
 
         private void ButtonTransfer_Click(object sender, RoutedEventArgs e)
         {
-            RecipientSelectionWindow recipientSelectionWindow = new RecipientSelectionWindow(SelectedClient, Clients);
-
-            if (recipientSelectionWindow.ShowDialog() == true)
+            if (SelectedClient != null && Clients != null && SelectedBankAccount != null)
             {
-                Client recipient = recipientSelectionWindow.SelectedRecipient;
-                BankAccount recipientBankAccount = recipientSelectionWindow.SelectedAccountRecipient;
-                ReplenishmentWindow openAccountWindow = new ReplenishmentWindow("Перевод на сумму");
+                RecipientSelectionWindow recipientSelectionWindow = new RecipientSelectionWindow(SelectedClient, Clients);
 
-                if (openAccountWindow.ShowDialog() == true)
+                if (recipientSelectionWindow.ShowDialog() == true)
                 {
-                    double money = openAccountWindow.AmountAddMoney;
-                    try
+                    Client recipient = recipientSelectionWindow.SelectedRecipient;
+                    BankAccount recipientBankAccount = recipientSelectionWindow.SelectedAccountRecipient;
+                    ReplenishmentWindow openAccountWindow = new ReplenishmentWindow("Перевод на сумму");
+
+                    if (openAccountWindow.ShowDialog() == true)
                     {
-                        Employee.MoneyTransfer
-                            (
-                            SelectedClient,
-                            SelectedBankAccount,
-                            recipient,
-                            recipientBankAccount,
-                            money);
-                    }
-                    catch (AccessRightsException ex)
-                    {
-                        MessageBox.Show(ex.Message);
+                        double money = openAccountWindow.AmountAddMoney;
+                        try
+                        {
+                            Employee.MoneyTransfer
+                                (
+                                SelectedClient,
+                                SelectedBankAccount,
+                                recipient,
+                                recipientBankAccount,
+                                money);
+                        }
+                        catch (AccessRightsException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                 }
             }
@@ -126,30 +131,33 @@ namespace BankSystemWpfControlLibrary
 
         private void ButtonTransferCov_Click(object sender, RoutedEventArgs e)
         {
-            RecipientSelectionWindow recipientSelectionWindow = new RecipientSelectionWindow(SelectedClient, Clients);
-
-            if (recipientSelectionWindow.ShowDialog() == true)
+            if (SelectedClient != null && Clients != null && SelectedBankAccount != null)
             {
-                Client recipient = recipientSelectionWindow.SelectedRecipient;
-                BankAccount recipientBankAccount = recipientSelectionWindow.SelectedAccountRecipient;
-                ReplenishmentWindow openAccountWindow = new ReplenishmentWindow("Перевод на сумму");
+                RecipientSelectionWindow recipientSelectionWindow = new RecipientSelectionWindow(SelectedClient, Clients);
 
-                if (openAccountWindow.ShowDialog() == true)
+                if (recipientSelectionWindow.ShowDialog() == true)
                 {
-                    double money = openAccountWindow.AmountAddMoney;
-                    try
+                    Client recipient = recipientSelectionWindow.SelectedRecipient;
+                    BankAccount recipientBankAccount = recipientSelectionWindow.SelectedAccountRecipient;
+                    ReplenishmentWindow openAccountWindow = new ReplenishmentWindow("Перевод на сумму");
+
+                    if (openAccountWindow.ShowDialog() == true)
                     {
-                        Employee.MoneyTransferCov
-                            (
-                            SelectedClient,
-                            SelectedBankAccount,
-                            recipient,
-                            recipientBankAccount,
-                            money);
-                    }
-                    catch (AccessRightsException ex)
-                    {
-                        MessageBox.Show(ex.Message);
+                        double money = openAccountWindow.AmountAddMoney;
+                        try
+                        {
+                            Employee.MoneyTransferCov
+                                (
+                                SelectedClient,
+                                SelectedBankAccount,
+                                recipient,
+                                recipientBankAccount,
+                                money);
+                        }
+                        catch (AccessRightsException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                 }
             }
